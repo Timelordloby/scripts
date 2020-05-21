@@ -1,0 +1,56 @@
+//Varibles
+float glow = 0.05; //glow var
+integer ON =1; //Boolen for While script
+integer OFF =0; //Boolen for While script
+string touched = "Hello there!"; // Text 01
+string aids = "You've now got AIDS!"; //Text 02
+string sound = "d5d42900-a8f2-7f7c-ebd7-c2033b26783b"; // Sound UUID
+vector COLOR_WHITE = <1.0, 1.0, 1.0>; //Label colour
+
+
+
+
+default
+{
+    state_entry() //always runs
+    {
+            //preload sound
+            llPreloadSound("d5d42900-a8f2-7f7c-ebd7-c2033b26783b");
+            
+            //Box label
+            float  OPAQUE      = 1.0;
+            llSetText("Doole's Test Box (Contains AIDS)\n \n \n \n \n ", COLOR_WHITE, OPAQUE);
+    }
+    
+    touch(integer num)
+    {
+        llPlaySound("d5d42900-a8f2-7f7c-ebd7-c2033b26783b",1); //plays sound
+        llSay(0, touched ); // says Hello there var
+        llSleep(1); // waits 1 second
+        llSay(0, aids ); // says aids var
+        
+        while(ON > OFF) // Loops glow effect for 7 seconds then jumps to end
+        {
+            llSetPrimitiveParams( [ PRIM_GLOW, ALL_SIDES, .8 ] );
+            llSleep(1);
+            llSetPrimitiveParams( [ PRIM_GLOW, ALL_SIDES, 0 ] );
+            llSleep(1);
+            llSetPrimitiveParams( [ PRIM_GLOW, ALL_SIDES, .8 ] );
+            llSleep(1);
+            llSetPrimitiveParams( [ PRIM_GLOW, ALL_SIDES, 0 ] );
+            llSleep(1);
+            llSetPrimitiveParams( [ PRIM_GLOW, ALL_SIDES, .8 ] );
+            llSleep(1);
+            llSetPrimitiveParams( [ PRIM_GLOW, ALL_SIDES, 0 ] );
+            llSleep(1);
+            llSetPrimitiveParams( [ PRIM_GLOW, ALL_SIDES, .8 ] );
+            llSleep(1);
+            llSetPrimitiveParams( [ PRIM_GLOW, ALL_SIDES, 0 ] );
+            jump found; //exit while statement
+            
+        }
+        
+        @found; // exit while statement here
+        
+    }
+}
