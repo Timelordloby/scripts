@@ -1,2 +1,1 @@
-# scripts
-LSL Scripting
+This is my repo for learning LSL scripting
